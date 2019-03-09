@@ -42,7 +42,7 @@ module.exports = function ensureLogin(verifyToken) {
       && req.headers.authorization.split(" ")[1]
     console.log(token)
     if (!req.user && token) {
-      verifyToken(token, function (user) {
+      verifyToken(token, function (err, user) {
         if (user) { req.user = user; next() }
         else next()
       })
